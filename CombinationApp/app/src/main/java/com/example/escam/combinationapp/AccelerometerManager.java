@@ -16,7 +16,7 @@ public class AccelerometerManager {
      * Accuracy configuration
      */
     private static float threshold = 500.0f;
-    private static int interval = 10000000;
+    private static int interval = 1000000000;
 
     private static Sensor sensor;
     private static SensorManager sensorManager;

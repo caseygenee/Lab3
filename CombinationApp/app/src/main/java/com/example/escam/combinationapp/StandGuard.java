@@ -42,7 +42,7 @@ public class StandGuard extends AppCompatActivity implements com.example.escam.c
     boolean movedRecently;	//true if accelerometerManager is still reporting a move event
     double latitude;
     double longitude;
-    int threshold = 17; //threshold for acceleration (higher means more movement required)
+    int threshold = 20; //threshold for acceleration (higher means more movement required)
     private SimpleLocation mLocation;
     @Override
 
@@ -72,7 +72,7 @@ public class StandGuard extends AppCompatActivity implements com.example.escam.c
         movedRecently = false;
 
         //Set acceleration sensitivity
-        threshold = 12;
+        ;
     }
 
 
@@ -137,7 +137,7 @@ public class StandGuard extends AppCompatActivity implements com.example.escam.c
             new SaveImageTask().execute(data);
             resetCam();
             Log.d(TAG, "onPictureTaken - jpeg");
-            movedRecently = false;
+            //movedRecently = false;
         }
     };
 
@@ -183,12 +183,14 @@ public class StandGuard extends AppCompatActivity implements com.example.escam.c
 
                 Log.d(TAG, "onPictureTaken - wrote bytes: " + data.length + " to " + outFile.getAbsolutePath());
                 refreshGallery(outFile);
+                movedRecently = false;
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
             }
+            movedRecently = false;
             return null;
         }
 
